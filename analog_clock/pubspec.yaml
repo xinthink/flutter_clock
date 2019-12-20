@@ -11,6 +11,7 @@ dependencies:
   flutter_clock_helper:
     path: ../flutter_clock_helper
   cupertino_icons: ^0.1.2
+  intl:
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +19,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: XingKaiFan
+      fonts:
+        - asset: assets/fonts/TengXiangBoDangXingKaiFan.ttf
