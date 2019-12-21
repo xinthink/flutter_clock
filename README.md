@@ -1,8 +1,8 @@
 # Flutter Clock
 
-The [Analog Clock](analog_clock) implementation is inspired by the ancient chinese timing device: [Sundial](https://en.wikipedia.org/wiki/Sundial).
+The [Analog Clock](analog_clock) implementation is inspired by the ancient Chinese timing device: [Sundial](https://en.wikipedia.org/wiki/Sundial).
 
-![Sundial light](analog_clock/art/sundial_light.png)
+[![Sundial light](analog_clock/art/sundial_light.png)](analog_clock)
 
 > TODO detailed explanation
 
