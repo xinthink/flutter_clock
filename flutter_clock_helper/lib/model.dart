@@ -13,6 +13,26 @@ import 'package:flutter/material.dart';
 ///
 /// Contestants: Do not edit this.
 class ClockModel extends ChangeNotifier {
+  /// Rotate the gnomon instead of the dial
+  get isFixedDial => _isFixedDial;
+  bool _isFixedDial = false;
+  set isFixedDial(bool isFixedDial) {
+    if (_isFixedDial != isFixedDial) {
+      _isFixedDial = isFixedDial;
+      notifyListeners();
+    }
+  }
+
+  /// Whether or not to display a digital version of time
+  get isDigitalTimeDisplayed => _isDigitalTimeDisplayed;
+  bool _isDigitalTimeDisplayed = true;
+  set isDigitalTimeDisplayed(bool isDisplayed) {
+    if (_isDigitalTimeDisplayed != isDisplayed) {
+      _isDigitalTimeDisplayed = isDisplayed;
+      notifyListeners();
+    }
+  }
+
   get is24HourFormat => _is24HourFormat;
   bool _is24HourFormat = true;
   set is24HourFormat(bool is24HourFormat) {

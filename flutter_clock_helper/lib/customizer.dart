@@ -128,6 +128,16 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
                     _themeMode = mode;
                   });
                 }),
+                _switch('Use fixed dial', _model.isFixedDial, (bool value) {
+                  setState(() {
+                    _model.isFixedDial = value;
+                  });
+                }),
+                _switch('Show digital time', _model.isDigitalTimeDisplayed, (bool value) {
+                  setState(() {
+                    _model.isDigitalTimeDisplayed = value;
+                  });
+                }),
                 _switch('24-hour format', _model.is24HourFormat, (bool value) {
                   setState(() {
                     _model.is24HourFormat = value;

@@ -96,31 +96,42 @@ class _SundialState extends State<Sundial> {
     child: Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        _buildSundialPlate(),
+        _buildDial(),
         _buildGnomon(),
       ],
     ),
   );
 
-  /// Plate of the Sundial, which marked with hour-lines.
-  Widget _buildSundialPlate() => Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Transform.rotate(
-      angle: _calcAngle(),
-      child: Image.asset(
-        "assets/images/sundial${_isDarkTheme ? '-dark' : ''}.png",
-        fit: BoxFit.cover,
-      ),
-    ),
-  );
+  /// The dial plate of the Sundial, which marked with hour-lines.
+  Widget _buildDial() {
+    final image = Image.asset(
+      "assets/images/sundial${_isDarkTheme ? '-dark' : ''}.png",
+      fit: BoxFit.cover,
+    );
+    final child = widget.model.isFixedDial ? image : Transform.rotate(
+      angle: _calcAngle(-1),
+      child: image,
+    );
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: child,
+    );
+  }
 
   /// [Gnomon](https://en.wikipedia.org/wiki/Gnomon) which casts a shadow onto the dial to indicate the time of the day.
-  Widget _buildGnomon() => Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Image.asset(
+  Widget _buildGnomon() {
+    final image = Image.asset(
       "assets/images/gnomon${_isDarkTheme ? '-dark' : ''}.png",
-    ),
-  );
+    );
+    final child = widget.model.isFixedDial ? Transform.rotate(
+      angle: _calcAngle(),
+      child: image,
+    ) : image;
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: child,
+    );
+  }
 
   /// Render time as text
   Widget _buildTimeText() => Expanded(
@@ -128,7 +139,7 @@ class _SundialState extends State<Sundial> {
     child: Column(
       children: <Widget>[
         _renderTraditionalTime(),
-        _renderDigits(),
+        _renderDigitalTime(),
       ],
     ),
   );
@@ -145,25 +156,22 @@ class _SundialState extends State<Sundial> {
   );
 
   /// Render time in digits
-  Widget _renderDigits() => Expanded(
+  Widget _renderDigitalTime() => Expanded(
     child: Container(
       alignment: Alignment.bottomRight,
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-      child: DigitalTime(
+      child: widget.model.isDigitalTimeDisplayed ? DigitalTime(
         time: _now,
         is24HourFormat: widget.model.is24HourFormat,
-      ),
+      ) : const SizedBox(),
     ),
   );
 
   /// Calculate rotation angle of the dial or gnomon.
   ///
-  /// For the dial:
-  /// - should rotate in counter-clockwise [direction]
-  /// - there is a 180° [offset], because we always show the current time at the bottom center
-  ///
-  /// However, the gnomon (shadow), should travel clockwise, with no offset.
-  double _calcAngle([int direction = -1, double offset = 180]) {
+  /// The dial should travel counter-clockwise ([direction] is `-1`),
+  /// while the gnomon (shadow) travels clockwise.
+  double _calcAngle([int direction = 1, double offset = 180]) {
     final s = _now.hour * 3600 + _now.minute * 60 + _now.second; // seconds elapsed since 00:00:00
     // debugPrint("--- ts=$s, angle=${s * radiansPerTick} (${s * 360 / 86400}°)");
     return direction * s * kRadiansPerTick + radians(offset);
