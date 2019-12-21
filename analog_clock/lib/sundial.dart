@@ -27,15 +27,29 @@ class _SundialState extends State<Sundial> {
   DateTime _now = DateTime.now();
   Timer _timer;
 
+  bool get _isDarkTheme => Theme.of(context).brightness == Brightness.dark;
+
   @override
   void initState() {
     super.initState();
+    widget.model.addListener(_updateModel);
     _updateTime();
+    _updateModel();
+  }
+
+  @override
+  void didUpdateWidget(Sundial oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.model != oldWidget.model) {
+      oldWidget.model.removeListener(_updateModel);
+      widget.model.addListener(_updateModel);
+    }
   }
 
   @override
   void dispose() {
     _timer?.cancel();
+    widget.model.removeListener(_updateModel);
     super.dispose();
   }
 
@@ -51,9 +65,14 @@ class _SundialState extends State<Sundial> {
     });
   }
 
+  void _updateModel() {
+    setState(() {
+    });
+  }
+
   @override
   Widget build(BuildContext context) => Container(
-    decoration: BoxDecoration(
+    decoration: _isDarkTheme ? null : BoxDecoration(
       gradient: RadialGradient(
         center: const Alignment(0.25, -1.0),
         radius: 1.5,
@@ -88,7 +107,7 @@ class _SundialState extends State<Sundial> {
     child: Transform.rotate(
       angle: _calcAngle(),
       child: Image.asset(
-        "assets/images/sundial.png",
+        "assets/images/sundial${_isDarkTheme ? '-dark' : ''}.png",
         fit: BoxFit.cover,
       ),
     ),
@@ -98,7 +117,7 @@ class _SundialState extends State<Sundial> {
   Widget _buildGnomon() => Padding(
     padding: const EdgeInsets.all(8.0),
     child: Image.asset(
-      "assets/images/pin-shadow.png",
+      "assets/images/gnomon${_isDarkTheme ? '-dark' : ''}.png",
     ),
   );
 
@@ -129,7 +148,10 @@ class _SundialState extends State<Sundial> {
     child: Container(
       alignment: Alignment.bottomRight,
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-      child: ModernTime(time: _now),
+      child: ModernTime(
+        time: _now,
+        is24HourFormat: widget.model.is24HourFormat,
+      ),
     ),
   );
 

@@ -20,32 +20,30 @@ class TraditionTime extends StatelessWidget {
     mainAxisAlignment: mainAxisAlignment,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      _renderQuarter(),
+      _renderQuarter(context),
       const SizedBox(width: 12),
-      _renderHour(),
+      _renderHour(context),
     ],
   );
 
-  Widget _renderHour() => Column(
+  Widget _renderHour(BuildContext context) => Column(
     mainAxisSize: MainAxisSize.min,
     children: toTraditionHour(time)
       .map((s) => Text(s,
-        style: const TextStyle(
-          color: Colors.black,
+        style: TextStyle(
           fontSize: 48,
           fontFamily: 'XingKaiFan',
         ),
       )).toList(),
   );
 
-  Widget _renderQuarter() => Padding(
+  Widget _renderQuarter(BuildContext context) => Padding(
     padding: const EdgeInsets.only(top: 10),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: toTraditionQuarter(time)
         .map((s) => Text(s,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
             fontSize: 20,
             fontFamily: 'XingKaiFan',
           ),
