@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:analog_clock/widgets/digital_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clock_helper/model.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
-import 'tradition_time_util.dart';
-import 'widgets/modern_time.dart';
-import 'widgets/tradition_time.dart';
+import 'traditional_time_util.dart';
+import 'widgets/digital_time.dart';
+import 'widgets/traditional_time.dart';
 
 /// An analog clock inspired by the ancient chinese timing device: [Sundial](https://en.wikipedia.org/wiki/Sundial).
 class Sundial extends StatefulWidget {
@@ -127,7 +128,7 @@ class _SundialState extends State<Sundial> {
     child: Column(
       children: <Widget>[
         _renderTraditionalTime(),
-        _renderModernTime(),
+        _renderDigits(),
       ],
     ),
   );
@@ -136,19 +137,19 @@ class _SundialState extends State<Sundial> {
   Widget _renderTraditionalTime() => Expanded(
     child: Container(
       alignment: Alignment.center,
-      child: TraditionTime(
+      child: TraditionalTime(
         time: _now,
         mainAxisAlignment: MainAxisAlignment.end,
       ),
     ),
   );
 
-  /// Render time in a modern format
-  Widget _renderModernTime() => Expanded(
+  /// Render time in digits
+  Widget _renderDigits() => Expanded(
     child: Container(
       alignment: Alignment.bottomRight,
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-      child: ModernTime(
+      child: DigitalTime(
         time: _now,
         is24HourFormat: widget.model.is24HourFormat,
       ),

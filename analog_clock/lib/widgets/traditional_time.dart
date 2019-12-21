@@ -1,12 +1,12 @@
-import 'package:analog_clock/tradition_time_util.dart';
+import 'package:analog_clock/traditional_time_util.dart';
 import 'package:flutter/material.dart';
 
 /// Render time in a traditional (Chinese) format.
-class TraditionTime extends StatelessWidget {
-  /// Instantiate a [TraditionTime] widget.
+class TraditionalTime extends StatelessWidget {
+  /// Instantiate a [TraditionalTime] widget.
   ///
   /// Given the [time] to be rendered, and an optional [mainAxisAlignment].
-  TraditionTime({
+  TraditionalTime({
     Key key,
     @required this.time,
     this.mainAxisAlignment = MainAxisAlignment.start,

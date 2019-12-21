@@ -1,4 +1,4 @@
-import 'package:analog_clock/tradition_time_util.dart';
+import 'package:analog_clock/traditional_time_util.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

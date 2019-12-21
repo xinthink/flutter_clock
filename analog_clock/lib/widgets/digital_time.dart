@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-/// Render time in a modern format.
-class ModernTime extends StatelessWidget {
-  const ModernTime({
+/// Render time in digital format.
+class DigitalTime extends StatelessWidget {
+  const DigitalTime({
     Key key,
     @required this.time,
     this.is24HourFormat = true,
