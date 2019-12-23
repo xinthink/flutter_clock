@@ -35,7 +35,7 @@ class TraditionalTime extends StatelessWidget {
         text: s,
         style: TextStyle(
           fontSize: 48,
-          fontFamily: 'XingKaiFan',
+          fontFamily: 'WeiBeiTiFan',
         ),
       )).toList(),
   );
@@ -49,7 +49,7 @@ class TraditionalTime extends StatelessWidget {
           text: s,
           style: TextStyle(
             fontSize: 20,
-            fontFamily: 'XingKaiFan',
+            fontFamily: 'WeiBeiTiFan',
           ),
         )).toList(),
     ),

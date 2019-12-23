@@ -10,7 +10,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'sundial.dart';
-// import 'analog_clock.dart';
 
 void main() {
   // A temporary measure until Platform supports web and TargetPlatform supports
@@ -31,6 +30,32 @@ void main() {
   //
   // Your job is to edit [AnalogClock], or replace it with your own clock
   // widget. (Look in analog_clock.dart for more details!)
-  // runApp(ClockCustomizer((ClockModel model) => AnalogClock(model)));
-  runApp(ClockCustomizer((ClockModel model) => Sundial(model: model)));
+  runApp(ClockCustomizer((ClockModel model) => Builder(
+    builder: (context) {
+      final theme = Theme.of(context);
+      final isDark = theme.brightness == Brightness.dark;
+      return Theme(
+        data: theme.copyWith(
+          primaryTextTheme: theme.primaryTextTheme.copyWith(
+            title: theme.primaryTextTheme.title.copyWith(
+              color: isDark ? kPrimaryTextColorDark : kPrimaryTextColor,
+            ),
+            subtitle: theme.primaryTextTheme.subtitle.copyWith(
+              color: isDark ? kSecondaryTextColorDark : kSecondaryTextColor,
+            ),
+            caption: theme.primaryTextTheme.caption.copyWith(
+              color: isDark ? kTipsTextColorDark : kTipsTextColor,
+            ),
+          ),
+        ),
+        child: Sundial(model: model),
+    );
+  })));
 }
+
+const kPrimaryTextColor = Colors.black;
+const kSecondaryTextColor = const Color(0xb2000000);
+const kTipsTextColor = Colors.black45;
+const kPrimaryTextColorDark = Colors.white;
+const kSecondaryTextColorDark = Colors.white70;
+const kTipsTextColorDark = Colors.white70;

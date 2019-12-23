@@ -22,6 +22,9 @@ flutter:
   assets:
     - assets/images/
   fonts:
-    - family: XingKaiFan
+    - family: WeiBeiTiFan
       fonts:
-        - asset: assets/fonts/TengXiangBoDangXingKaiFan.ttf
+        - asset: assets/fonts/WangHanZongWeiBeiTiFan-2.ttf
+    - family: weathericons
+      fonts:
+        - asset: assets/fonts/weathericons-regular-webfont.ttf

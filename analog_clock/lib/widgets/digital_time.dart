@@ -12,9 +12,6 @@ class DigitalTime extends StatelessWidget {
   final DateTime time;
   final bool is24HourFormat;
 
-  bool _isDarkTheme(BuildContext context) =>
-    Theme.of(context).brightness == Brightness.dark;
-
   String get _formattedTime =>
     (is24HourFormat ? DateFormat.Hms() : DateFormat.jms()).format(time);
 
@@ -22,8 +19,8 @@ class DigitalTime extends StatelessWidget {
   Widget build(BuildContext context) => Text(
     _formattedTime,
     style: TextStyle(
-      color: _isDarkTheme(context) ? Colors.white70 : Colors.black45,
-      fontSize: 12,
+      color: Theme.of(context).primaryTextTheme.caption.color,
+      fontSize: 10,
       fontFamily: 'Menlo',
     ),
   );

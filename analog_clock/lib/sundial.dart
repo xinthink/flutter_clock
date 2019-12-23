@@ -7,6 +7,7 @@ import 'package:vector_math/vector_math_64.dart' show radians;
 import 'traditional_time_util.dart';
 import 'widgets/digital_time.dart';
 import 'widgets/traditional_time.dart';
+import 'widgets/weather.dart';
 
 /// An analog clock inspired by the ancient chinese timing device: [Sundial](https://en.wikipedia.org/wiki/Sundial).
 class Sundial extends StatefulWidget {
@@ -82,10 +83,19 @@ class _SundialState extends State<Sundial> {
         ],
       ),
     ),
-    child: Row(
+    child: Stack(
       children: <Widget>[
-        _buildTimeText(),
-        _buildSundial(),
+        Row(
+          children: <Widget>[
+            _buildTexts(),
+            _buildSundial(),
+          ],
+        ),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: _renderDigitalTime(),
+        ),
       ],
     ),
   );
@@ -132,13 +142,13 @@ class _SundialState extends State<Sundial> {
     );
   }
 
-  /// Render time as text
-  Widget _buildTimeText() => Expanded(
+  /// Render text information, time as string & wather/location
+  Widget _buildTexts() => Expanded(
     flex: 3,
     child: Column(
       children: <Widget>[
         _renderTraditionalTime(),
-        _renderDigitalTime(),
+        _renderWeather(),
       ],
     ),
   );
@@ -154,17 +164,23 @@ class _SundialState extends State<Sundial> {
     ),
   );
 
-  /// Render time in digits
-  Widget _renderDigitalTime() => Expanded(
+  /// Render weather/location info
+  Widget _renderWeather() => Expanded(
     child: Container(
       alignment: Alignment.bottomRight,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-      child: widget.model.isDigitalTimeDisplayed ? DigitalTime(
-        time: _now,
-        is24HourFormat: widget.model.is24HourFormat,
-      ) : const SizedBox(),
+      padding: const EdgeInsets.all(8),
+      child: Weather(model: widget.model),
     ),
   );
+
+  /// Render the digital time
+  _renderDigitalTime() => widget.model.isDigitalTimeDisplayed ? Padding(
+    padding: const EdgeInsets.all(8),
+    child: DigitalTime(
+      time: _now,
+      is24HourFormat: widget.model.is24HourFormat,
+    ),
+  ) : const SizedBox();
 
   /// Calculate rotation angle of the dial or gnomon.
   ///

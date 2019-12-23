@@ -86,9 +86,8 @@ Two options are added to the Customizer screen:
 
 ### Fonts
 
-Tranditional Chinese fonts used in this app:
-- [白舟太篆书体粗](http://www.fonts.net.cn/font-33216292055.html)
-- [腾祥伯当行楷繁](http://www.fonts.net.cn/font-33203372624.html)
+- Tranditional Chinese font: [王漢宗魏碑體繁](http://www.fonts.net.cn/font-36604353908.html), License: GNU GPL
+- [Weather Icons](https://erikflowers.github.io/weather-icons/), License: SIL OFL 1.1
 
 [Sundial]: https://en.wikipedia.org/wiki/Sundial
 [Gnomon]: https://en.wikipedia.org/wiki/Gnomon
