@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:analog_clock/widgets/cross_fade_text.dart';
-import 'package:analog_clock/widgets/digital_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clock_helper/model.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
