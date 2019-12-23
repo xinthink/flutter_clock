@@ -32,7 +32,7 @@ Ancient chinese people divide a day into 12 periods, each for 2 hours, and name 
 |戌|7pm to 9pm|
 |亥|9pm to 11pm|
 
-In addition, for each of the periods, the first and the second hour are named **初** and **正** respectively. For example, **午** which represents **noon** (11am to 1pm), is divided into **午初** and **午正**, representing the time from `11am` to `12pm`, and `12pm` to `1pm`, respectively.
+In addition, for each of the periods, the first and the second hour is named **初** and **正** respectively. For example, **午** which represents **noon** (11am to 1pm), is divided into **午初** and **午正**, representing the time from `11am` to `12pm`, and `12pm` to `1pm`, respectively.
 
 To indicate the time more precisely, ancient chinese people introduced **刻** (quarters) to represent every 15 minutes, so that there are 4 quarters per hour, and 96 quarters per day.
 
@@ -74,7 +74,7 @@ In the **rotated-dial** mode (the default), the current time pointer always poin
   </tr>
 </table>
 
-In either mode, the dial or the pointer travels 360° (a whole circle) every 24 hours, so you may hardly realize the movement even if you stare at the screen. :smile:
+In either mode, the dial or the pointer travels 360° (a whole circle) every 24 hours, so you may hardly realize the movement even if you stare at the screen for a while. :smile:
 
 ### Customizable Options
 
