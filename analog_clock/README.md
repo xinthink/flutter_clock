@@ -67,8 +67,12 @@ A real [sundial] indicates time with the shadow of the [gnomon], but in this sim
 
 In the **rotated-dial** mode (the default), the current time pointer always points to the bottom center of the dial. While in the **fixed-dial** mode, the pointer (shadow of the [gnomon]) travels across the dial during the day. For example, the following screenshots represent the **rotated-dial** and the **fixed-dial** mode respectively, both of them indicate a same time: `01:25 AM`.
 
-<img src='art/rotated-dial.jpg' width='360' alt="rotated-dial mode">
-<img src='art/fixed-dial.jpg' width='360' alt="fixed-dial mode">
+<table>
+  <tr>
+    <td><img src='art/rotated-dial.jpg' width='360' alt="rotated-dial mode"></td>
+    <td><img src='art/fixed-dial.jpg' width='360' alt="fixed-dial mode"></td>
+  </tr>
+</table>
 
 In either mode, the dial or the pointer travels 360° (a whole circle) every 24 hours, so you may hardly realize the movement even if you stare at the screen. :smile:
 
