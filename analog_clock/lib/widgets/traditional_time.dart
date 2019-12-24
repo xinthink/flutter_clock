@@ -1,7 +1,7 @@
 import 'package:analog_clock/traditional_time_util.dart';
 import 'package:flutter/material.dart';
 
-import 'cross_fade_text.dart';
+import 'cross_fade_icon.dart';
 
 /// Render time in a traditional (Chinese) format.
 class TraditionalTime extends StatelessWidget {
@@ -31,26 +31,22 @@ class TraditionalTime extends StatelessWidget {
   Widget _renderHour(BuildContext context) => Column(
     mainAxisSize: MainAxisSize.min,
     children: toTraditionalHour(time)
-      .map((s) => CrossFadeText(
-        text: s,
-        style: TextStyle(
-          fontSize: 48,
-          fontFamily: 'WeiBeiTiFan',
-        ),
+      .map((ic) => CrossFadeIcon(
+        icon: ic,
+        size: 48,
+        color: Theme.of(context).primaryTextTheme.title.color,
       )).toList(),
   );
 
   Widget _renderQuarter(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: 10),
+    padding: const EdgeInsets.only(top: 6),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: toTraditionalQuarter(time)
-        .map((s) => CrossFadeText(
-          text: s,
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'WeiBeiTiFan',
-          ),
+        .map((ic) => CrossFadeIcon(
+          icon: ic,
+          size: 24,
+          color: Theme.of(context).primaryTextTheme.title.color,
         )).toList(),
     ),
   );
