@@ -114,7 +114,7 @@ class _SundialState extends State<Sundial> {
   /// The dial plate of the Sundial, which marked with hour-lines.
   Widget _buildDial() {
     final image = Image.asset(
-      "assets/images/sundial${_isDarkTheme ? '-dark' : ''}.jpg",
+      "assets/images/sundial${_isDarkTheme ? '-dark' : ''}.png",
       fit: BoxFit.cover,
     );
     final child = widget.model.isFixedDial ? image : Transform.rotate(
