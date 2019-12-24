@@ -629,7 +629,7 @@ file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/main.dart
 file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/sundial.dart
 file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/traditional_time_util.dart
 file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/weather_util.dart
-file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/widgets/cross_fade_text.dart
+file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/widgets/cross_fade_icon.dart
 file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/widgets/digital_time.dart
 file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/widgets/traditional_time.dart
 file:///Users/ywu/ws/flutter/flutter_clock/analog_clock/lib/widgets/weather.dart
