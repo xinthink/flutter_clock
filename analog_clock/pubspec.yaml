@@ -24,6 +24,9 @@ flutter:
     - family: WeiBeiSundial
       fonts:
         - asset: assets/fonts/weibei-sundial.ttf
+    - family: ZhuanSundial
+      fonts:
+        - asset: assets/fonts/xiaozhuan-sundial.ttf
     - family: weathericons
       fonts:
         - asset: assets/fonts/weathericons-regular-webfont.ttf
