@@ -11,6 +11,7 @@ dependencies:
   flutter_clock_helper:
     path: ../flutter_clock_helper
   intl:
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
