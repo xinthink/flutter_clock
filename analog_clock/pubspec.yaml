@@ -11,6 +11,7 @@ dependencies:
   flutter_clock_helper:
     path: ../flutter_clock_helper
   intl:
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +25,9 @@ flutter:
     - family: WeiBeiSundial
       fonts:
         - asset: assets/fonts/weibei-sundial.ttf
+    - family: ZhuanSundial
+      fonts:
+        - asset: assets/fonts/xiaozhuan-sundial.ttf
     - family: weathericons
       fonts:
         - asset: assets/fonts/weathericons-regular-webfont.ttf

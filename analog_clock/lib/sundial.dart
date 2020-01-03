@@ -6,6 +6,8 @@ import 'package:vector_math/vector_math_64.dart' show radians;
 
 import 'traditional_time_util.dart';
 import 'widgets/digital_time.dart';
+import 'widgets/drawn_dial.dart';
+import 'widgets/drawn_gnomon.dart';
 import 'widgets/traditional_time.dart';
 import 'widgets/weather.dart';
 
@@ -113,34 +115,17 @@ class _SundialState extends State<Sundial> {
 
   /// The dial plate of the Sundial, which marked with hour-lines.
   Widget _buildDial() {
-    final image = Image.asset(
-      "assets/images/sundial${_isDarkTheme ? '-dark' : ''}.png",
-      fit: BoxFit.cover,
-    );
-    final child = widget.model.isFixedDial ? image : Transform.rotate(
+    final child = DrawnDial();
+    return widget.model.isFixedDial ? child : Transform.rotate(
       angle: _calcAngle(-1),
-      child: image,
-    );
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
       child: child,
     );
   }
 
   /// [Gnomon](https://en.wikipedia.org/wiki/Gnomon) which casts a shadow onto the dial to indicate the time of the day.
-  Widget _buildGnomon() {
-    final image = Image.asset(
-      "assets/images/gnomon${_isDarkTheme ? '-dark' : ''}.png",
-    );
-    final child = widget.model.isFixedDial ? Transform.rotate(
-      angle: _calcAngle(),
-      child: image,
-    ) : image;
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: child,
-    );
-  }
+  Widget _buildGnomon() => DrawnGnomon(
+    radians: widget.model.isFixedDial ? _calcAngle() : 0,
+  );
 
   /// Render text information, time as string & wather/location
   Widget _buildTexts() => Expanded(
@@ -188,7 +173,7 @@ class _SundialState extends State<Sundial> {
   /// while the gnomon (shadow) travels clockwise.
   double _calcAngle([int direction = 1, double offset = 180]) {
     final s = _now.hour * 3600 + _now.minute * 60 + _now.second; // seconds elapsed since 00:00:00
-    // debugPrint("--- ts=$s, angle=${s * radiansPerTick} (${s * 360 / 86400}°)");
+    // debugPrint("--- ts=$s, angle=${s * kRadiansPerTick} (${s * 360 / 86400}°)");
     return direction * s * kRadiansPerTick + radians(offset);
   }
 }
