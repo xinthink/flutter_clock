@@ -1,8 +1,9 @@
-import 'package:analog_clock/traditional_time_util.dart';
+import 'package:collection_ext/iterables.dart' hide Transform;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
+import '../traditional_time_util.dart';
 import 'dial_painter.dart';
 import 'drawn_sundial_container.dart';
 
@@ -22,10 +23,12 @@ class DrawnDial extends StatelessWidget {
   Widget _buildTimeMarks(BuildContext context, double size) => Center(
     child: Stack(
       alignment: Alignment.center,
-      children: [_buildGnomonBottom(size)] +
-        _buildBrancheMarks(context, size) +
-        _buildStemMarks(context, size) +
-        _buildSectorMarks(context, size),
+      children: [
+        _buildGnomonBottom(size),
+        ..._buildBrancheMarks(context, size),
+        ..._buildStemMarks(context, size),
+        ..._buildSectorMarks(context, size),
+      ],
     ),
   );
 
@@ -38,48 +41,37 @@ class DrawnDial extends StatelessWidget {
   );
 
   /// Marks for [Earthly Branches](https://en.wikipedia.org/wiki/Earthly_Branches)
-  List<Widget> _buildBrancheMarks(BuildContext context, double size) {
-    final widgets = <Widget>[];
-    for (int i = 0; i < kEarthlyBranches.length; i++) {
-      final text = kEarthlyBranches[i];
-      widgets.add(_buildRotatedText(context, text,
+  Iterable<Widget> _buildBrancheMarks(BuildContext context, double size) =>
+    kEarthlyBranches.mapIndexed((i, b) =>
+      _buildRotatedText(context, b,
         diameter: size * 0.68,
         angle: i * 30.0 + 180,
         size: size * 0.077,
         color: Theme.of(context).primaryTextTheme.title.color,
-      ));
-    }
-    return widgets;
-  }
+    ));
 
   /// Marks for [Celestial Stems](https://en.wikipedia.org/wiki/Heavenly_Stems)
-  List<Widget> _buildStemMarks(BuildContext context, double size) {
-    final widgets = <Widget>[];
-    for (int i = 0; i < kCelestialStems.length; i++) {
-      final text = kCelestialStems[i];
-      widgets.add(_buildRotatedText(context, text,
+  Iterable<Widget> _buildStemMarks(BuildContext context, double size) =>
+    kCelestialStems.mapIndexed((i, stem) =>
+      _buildRotatedText(context, stem,
         diameter: size * 0.4,
         angle: i * 36.0,
         size: size * 0.046,
         color: Theme.of(context).primaryTextTheme.subtitle.color,
-      ));
-    }
-    return widgets;
-  }
+    ));
 
   /// Marks for sectors for each [Double Hour](https://en.wikipedia.org/wiki/Traditional_Chinese_timekeeping)
-  List<Widget> _buildSectorMarks(BuildContext context, double size) {
+  Iterable<Widget> _buildSectorMarks(BuildContext context, double size) {
     final widgets = <Widget>[];
     int i = 0;
     while (i < 24) {
-      kTraditionSectors.forEach((text) {
-        widgets.add(_buildRotatedText(context, text,
+      kTraditionSectors.mapToList(widgets, (sector) =>
+        _buildRotatedText(context, sector,
           diameter: size * 0.905,
           angle: i++ * 15.0 - 7.5,
           size: size * 0.046,
           color: Theme.of(context).primaryTextTheme.subtitle.color,
-        ));
-      });
+      ));
     }
     return widgets;
   }
