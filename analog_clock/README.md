@@ -1,6 +1,6 @@
 # Analog Clock - the sundial implementation
 
-An analog clock implementation inspired by the ancient chinese timing device: [Sundial].
+An analog clock implementation inspired by the ancient Chinese timing device: [Sundial].
 
 <img src='art/sundial-light.jpg' width='720' alt="Light-themed screenshot">
 <img src='art/sundial-dark.jpg' width='720' alt="Dark-themed screenshot">
