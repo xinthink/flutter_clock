@@ -11,6 +11,7 @@ The definition on [Wikipedia][Sundial]:
 > A sundial is a device that tells the time of day when there is sunlight by the apparent position of the Sun in the sky. In the narrowest sense of the word, it consists of a flat plate (the dial) and a [gnomon], which casts a shadow onto the dial. As the Sun appears to move across the sky, the shadow aligns with different hour-lines, which are marked on the dial to indicate the time of day.
 
 Sundials in real world:
+
 <img src='art/real-world-sundials.jpg' width='720' alt="Real-world Sundials">
 
 ### Ancient Chinese time symbols
