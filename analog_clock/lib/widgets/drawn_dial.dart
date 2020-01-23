@@ -1,4 +1,5 @@
 import 'package:collection_ext/iterables.dart' hide Transform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
@@ -32,12 +33,14 @@ class DrawnDial extends StatelessWidget {
     ),
   );
 
-  // Bottom of the Gnomon
-  Widget _buildGnomonBottom(double size) => SvgPicture.asset(
-    'assets/images/gnomon-bottom.svg',
-    semanticsLabel: 'Gnomon Bottom',
+  /// Bottom of the Gnomon.
+  /// For web, the svg widget has problems on size & position, use pngs instead.
+  Widget _buildGnomonBottom(double size) => SizedBox(
     width: size * 0.14,
     height: size * 0.14,
+    child: kIsWeb
+      ? Image.asset('assets/images/gnomon-bottom.png', semanticLabel: 'Gnomon Bottom')
+      : SvgPicture.asset( 'assets/images/gnomon-bottom.svg', semanticsLabel: 'Gnomon Bottom'),
   );
 
   /// Marks for [Earthly Branches](https://en.wikipedia.org/wiki/Earthly_Branches)
