@@ -1,0 +1,41 @@
+name: deploy
+
+on:
+  push:
+    branches: master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: dev
+    - name: Install dependencies
+      run: |
+        flutter config --enable-web
+        cd analog_clock && flutter packages get
+    - name: Build
+      run: |
+        cd analog_clock
+        flutter build web
+        touch build/web/.nojekyll
+        echo 'sundial.xinthink.com' > build/web/CNAME
+        mv build/web/index.html build/web/sundial.html
+        mv build/web/index-prod.html build/web/index.html
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v2.9.0
+      env:
+        PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./analog_clock/build/web
+      with:
+        emptyCommits: false
+    - name: Notification
+      if: cancelled() == false
+      uses: xinthink/action-telegram@v1.1
+      with:
+        botToken: ${{ secrets.TelegramBotToken }}
+        chatId: ${{ secrets.TelegramTarget }}
+        jobStatus: ${{ job.status }}

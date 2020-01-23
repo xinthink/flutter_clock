@@ -1,0 +1,26 @@
+name: check
+
+on: [push, pull_request]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: dev
+    - name: Install dependencies
+      run: cd analog_clock && flutter packages get
+    - name: Analyze & test
+      run: |
+        cd analog_clock
+        flutter analyze
+        flutter test
+    - name: Notification
+      if: cancelled() == false
+      uses: xinthink/action-telegram@v1.1
+      with:
+        botToken: ${{ secrets.TelegramBotToken }}
+        chatId: ${{ secrets.TelegramTarget }}
+        jobStatus: ${{ job.status }}

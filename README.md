@@ -1,5 +1,9 @@
 # Flutter Clock
 
+[![Check Status][check-badge]][github-runs]
+[![Deployment Status][deploy-badge]][github-runs]
+[![BSD 3-Clause][license-badge]][license]
+
 This's my [Flutter Clock](https://flutter.dev/clock) challenge project.
 <p><a href='https://www.credential.net/6f526e73-948e-4064-bb1f-9d87dd936ab0?key=f3c23fad6287f7fbae14ac11dbacc159f65649cfa5aa8466b4bbeeeabf2aadb3'>
   <img src='https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/14571482?key=f3c23fad6287f7fbae14ac11dbacc159f65649cfa5aa8466b4bbeeeabf2aadb3'
@@ -23,3 +27,9 @@ See a [live demo](https://maryx.github.io/flutter_clock) with Flutter for Web!
 Example [Digital Clock](digital_clock)
 
 <img src='digital_clock/digital.gif' width='350'>
+
+[check-badge]: https://github.com/xinthink/flutter_clock/workflows/check/badge.svg
+[deploy-badge]: https://github.com/xinthink/flutter_clock/workflows/deploy/badge.svg
+[github-runs]: https://github.com/xinthink/flutter_clock/actions
+[license-badge]: https://img.shields.io/github/license/xinthink/flutter_clock
+[license]: https://raw.githubusercontent.com/xinthink/flutter_clock/master/LICENSE
